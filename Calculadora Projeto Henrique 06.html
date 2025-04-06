@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .calculator {
+            width: 260px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .logo {
+            width: 100px;
+            margin-bottom: 10px;
+        }
+        .display {
+            width: calc(100% - 20px);
+            height: 50px;
+            text-align: right;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #007BFF;
+            color: white;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+        }
+        button {
+            padding: 15px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .operator { background: #ff9500; color: white; }
+        .clear { background: #ff3b30; color: white; }
+        .equals { background: #4cd964; color: white; }
+        button:hover { opacity: 0.8; }
+        .footer {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <img src="https://res.cloudinary.com/dvwsww4w6/image/upload/v1743689496/logo_eaxfmi.png" alt="Logo" class="logo">
+        <input type="text" class="display" id="display" disabled>
+        <div class="buttons">
+            <button class="clear" onclick="clearDisplay()">C</button>
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button class="operator" onclick="appendToDisplay('/')">/</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button class="operator" onclick="appendToDisplay('*')">*</button>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button class="operator" onclick="appendToDisplay('-')">-</button>
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button class="equals" onclick="calculate()">=</button>
+            <button class="operator" onclick="appendToDisplay('+')">+</button>
+        </div>
+        <div class="footer">SUBMUNDOTECH Agradece!</div>
+    </div>
+
+    <script>
+        function appendToDisplay(value) {
+            document.getElementById("display").value += value;
+        }
+        function clearDisplay() {
+            document.getElementById("display").value = "";
+        }
+        function calculate() {
+            try {
+                document.getElementById("display").value = eval(document.getElementById("display").value);
+            } catch (error) {
+                alert("Entrada inválida");
+            }
+        }
+    </script>
+</body>
+</html>
